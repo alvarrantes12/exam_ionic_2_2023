@@ -36,7 +36,7 @@ const List: React.FC = () => {
               <IonCardHeader>
                 <IonCardSubtitle className='Ion-Card-SubTitle-ID'>ID: {country.id}</IonCardSubtitle>
                 <IonCardTitle className='Ion-Card-Title'>Nombre: {country.name}</IonCardTitle>
-                <IonCardSubtitle className='Ion-Card-SubTitle'>Factor: {country.fact}</IonCardSubtitle>
+                <IonCardSubtitle className='Ion-Card-SubTitle'>Dato Curioso: {country.fact}</IonCardSubtitle>
               </IonCardHeader>
             </IonCard>
           )
