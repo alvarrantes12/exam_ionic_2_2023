@@ -1,29 +1,101 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useState } from "react";
 
 function ApiMethods(url: any) {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const putMethod = (id: any, name: any) => {
-        const config = {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        }
+  useEffect(() => {
+    const config = {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    };
 
-        setLoading(true);
-        axios.put(`${url}/${id}`, { name: name }, config)
-            .then((response) => { setData(response.data) })
-            .catch((err) => { setError(err) })
-            .finally(() => { setLoading(false) })
+    setLoading(true);
+    axios
+      .get(url, config)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [url]);
 
-    }
+  const postMethod = (name: any, fact: string) => {
+    const config = {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    };
 
-    return { data, loading, error }
+    setLoading(true);
+    axios
+      .post(url, { name: name, fact: fact }, config)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
+  const putMethod = (id: any, name: any, fact: any) => {
+    const config = {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    };
+
+    setLoading(true);
+    axios
+      .put(`${url}/${id}`, { name: name, fact: fact }, config)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const deleteMethod = (id: any) => {
+    const config = {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    };
+
+    setLoading(true);
+    axios
+      .delete(`${url}/${id}`, config)
+      .then(() => {
+        setData(null);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  return { data, loading, error, postMethod, putMethod, deleteMethod };
 }
 
 export default ApiMethods;
