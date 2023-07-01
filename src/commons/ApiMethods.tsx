@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ApiMethods(url: any) {
   const [data, setData] = useState(null);
@@ -29,7 +28,7 @@ function ApiMethods(url: any) {
       });
   }, [url]);
 
-  const postMethod = (name: any, fact: string) => {
+  const postMethod = (name: any, fact: any) => {
     const config = {
       headers: {
         "Accept": "application/json",
@@ -84,8 +83,8 @@ function ApiMethods(url: any) {
     setLoading(true);
     axios
       .delete(`${url}/${id}`, config)
-      .then(() => {
-        setData(null);
+      .then((response) => {
+        setData(response.data);
       })
       .catch((err) => {
         setError(err);

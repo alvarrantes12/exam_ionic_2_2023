@@ -9,9 +9,8 @@ import {
   IonMenuToggle,
   IonNote,
 } from '@ionic/react';
-
 import { useLocation } from 'react-router-dom';
-import { heartOutline, heartSharp, listCircleOutline } from 'ionicons/icons';
+import { trash, cloudDone, apps, create } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -23,16 +22,28 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Lista Principal',
+    title: 'Lista de Países',
     url: '/pages/List',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    iosIcon: apps,
+    mdIcon: apps
   },
   {
-    title: 'Formulario para editar',
-    url: '/pages/Form',
-    iosIcon: listCircleOutline,
-    mdIcon: listCircleOutline
+    title: 'Crear Países',
+    url: '/pages/FormNew',
+    iosIcon: cloudDone,
+    mdIcon: cloudDone
+  },
+  {
+    title: 'Editar Países',
+    url: '/pages/FormEdit',
+    iosIcon: create,
+    mdIcon: create
+  },
+  {
+    title: 'Eliminar Países',
+    url: '/pages/FormDelete',
+    iosIcon: trash,
+    mdIcon: trash
   }
 ];
 
@@ -43,8 +54,8 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Ionic 2023</IonListHeader>
-          <IonNote>Ionic Exam</IonNote>
+          <IonListHeader>Segundo Examen</IonListHeader>
+          <IonNote>Ionic Countries</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>

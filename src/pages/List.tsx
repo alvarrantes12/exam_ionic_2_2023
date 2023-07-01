@@ -26,7 +26,7 @@ const List: React.FC = () => {
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>
+            <IonTitle  className='Ion__Title'>
               Lista de Paises
             </IonTitle>
           </IonToolbar>
@@ -34,11 +34,11 @@ const List: React.FC = () => {
         <IonContent>
           {data?.map((country: any) => {
             return (
-              <IonCard className='Ion__Card'>
+              <IonCard className='Ion__Card' key={country.id}>
                 <IonCardHeader>
                   <IonCardTitle className='Ion__Card__Title'>Nombre: {country.name}</IonCardTitle>
+                  <IonCardSubtitle className='Ion__Card__Subtitle'>Hecho del país: {country.fact}</IonCardSubtitle>
                   <IonCardSubtitle className='Ion__Card__Subtitle'>ID: {country.id}</IonCardSubtitle>
-                  <IonCardSubtitle className='Ion__Card__Subtitle'>Fact: {country.fact}</IonCardSubtitle>
                 </IonCardHeader>
               </IonCard>
             )
