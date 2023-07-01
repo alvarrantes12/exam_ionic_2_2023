@@ -29,11 +29,17 @@ const appPages: AppPage[] = [
     mdIcon: heartSharp
   },
   {
-    title: 'Formulario para editar',
+    title: 'Crear Producto',
+    url: '/pages/CreateForm',
+    iosIcon: listCircleOutline,
+    mdIcon: listCircleOutline
+  },
+  {
+    title: 'Editar Producto',
     url: '/pages/Form',
     iosIcon: listCircleOutline,
     mdIcon: listCircleOutline
-  }
+  },
 ];
 
 const Menu: React.FC = () => {
