@@ -41,14 +41,14 @@ function ApiMethods(url: any) {
         }
 
         setLoading(true);
-        axios.put(`${url}/${id}`, { name: name }, config)
+        axios.put(`${url}/${id}`, { name: name}, config)
             .then((response) => { setData(response.data) })
             .catch((err) => { setError(err) })
             .finally(() => { setLoading(false) })
 
     }
 
-    return { data, loading, error }
+    return { data, loading, error, putMethod }
 
     
 

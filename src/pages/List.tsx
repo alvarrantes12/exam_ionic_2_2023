@@ -27,7 +27,7 @@ const List: React.FC = () => {
         <IonHeader>
           <IonToolbar>
             <IonTitle>
-              Tienda de David
+              Lista de Paises
             </IonTitle>
           </IonToolbar>
         </IonHeader>
@@ -36,7 +36,7 @@ const List: React.FC = () => {
             return (
               <IonCard className='Ion__Card'>
                 <IonCardHeader>
-                  <IonCardTitle className='Ion__Card__Title'>Nombre del pais {country.name}</IonCardTitle>
+                  <IonCardTitle className='Ion__Card__Title'>Nombre del pais: {country.name}</IonCardTitle>
                   <IonCardSubtitle className='Ion__Card__Subtitle'>Dato curioso: {country.fact}</IonCardSubtitle>
                 </IonCardHeader>
               </IonCard>
