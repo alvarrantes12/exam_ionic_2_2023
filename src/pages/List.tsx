@@ -25,7 +25,7 @@ const List: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>
-            Lab 4 Ionic - Lista de Paises
+            Examen 2 Ionic - Lista de Paises
           </IonTitle>
         </IonToolbar>
       </IonHeader>
