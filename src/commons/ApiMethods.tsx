@@ -36,7 +36,7 @@ function ApiMethods(url: any) {
 
     }
 
-    return { data, loading, error }
+    return { data, loading, error, putMethod}
 
 }
 
