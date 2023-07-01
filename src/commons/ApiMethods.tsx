@@ -22,24 +22,21 @@ function ApiMethods(url: any) {
     }, [url])
 
 
-    const putMethod = (id: any, name: any) => {
+    const putMethod = (id: any, name: any, fact: any) => {
         const config = {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json"
             }
         }
-
         setLoading(true);
-        axios.put(`${url}/${id}`, { name: name }, config)
+        axios.put(`${url}/${id}`, { name: name, fact: fact }, config)
             .then((response) => { setData(response.data) })
             .catch((err) => { setError(err) })
             .finally(() => { setLoading(false) })
 
     }
-
-    return { data, loading, error }
-
-}
+    return { data, loading, error, putMethod };
+};
 
 export default ApiMethods;

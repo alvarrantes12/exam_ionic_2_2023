@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { heartOutline, heartSharp, listCircleOutline } from 'ionicons/icons';
+import { createOutline, listCircleOutline } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -25,14 +25,14 @@ const appPages: AppPage[] = [
   {
     title: 'Lista Principal',
     url: '/pages/List',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
+    iosIcon: listCircleOutline,
+    mdIcon: listCircleOutline
   },
   {
     title: 'Formulario para editar',
     url: '/pages/Form',
-    iosIcon: listCircleOutline,
-    mdIcon: listCircleOutline
+    iosIcon: createOutline,
+    mdIcon: createOutline
   }
 ];
 
