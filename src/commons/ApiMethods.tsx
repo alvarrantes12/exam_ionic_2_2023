@@ -21,6 +21,28 @@ function ApiMethods(url: any) {
             .finally(() => { setLoading(false) })
 
     }
+  
+    const refetch = () => {
+    const config = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    };
+
+    setLoading(true);
+    axios
+      .post(url, { country: "IONIC", fact: 0 }, config)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
     return { data, loading, error }
 
