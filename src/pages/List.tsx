@@ -1,6 +1,4 @@
-
-import { useParams } from 'react-router';;
-import './List.css';
+import "./List.css";
 
 import {
   IonPage,
@@ -13,53 +11,52 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonCardContent,
-  IonButton
 } from "@ionic/react";
 
+import ApiMethods from "../commons/ApiMethods";
 
-import ApiMethods from '../commons/ApiMethods';
-
-import { environment } from '../environments/environment.dev';
+import { environment } from "../environments/environment.dev";
 
 const List: React.FC = () => {
-
-  const { data } = ApiMethods(`${environment.apiEndpoint}/countries`);
+  const { data, getMethod } = ApiMethods(
+    `${environment.apiEndpoint}/countries`
+  );
 
   if (!data) {
-    return <h2>Cargando Listado...</h2>
+    return <h2>Cargando Listado...</h2>;
   } else {
     return (
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>
-              Examen 2
-            </IonTitle>
+            <IonTitle>Examen 2</IonTitle>
           </IonToolbar>
         </IonHeader>
 
         <IonContent>
-          {data?.map(([country]: any)=>{
+          {data?.map((country: any) => {
             return (
-              <IonCard className= 'ion-card'>
+              <IonCard className="ion-card">
                 <IonCardHeader>
-                  <IonCardTitle className='ion-card-title' >Id: {country.id}</IonCardTitle>
-                  <IonCardTitle className ='ion-card-title'> Pais: {country.name}</IonCardTitle>
-                  <IonCardSubtitle className ='ion-card-subtitle'>  Dato curioso: {country.dato}</IonCardSubtitle>
+                  <IonCardSubtitle className="ion-card-subtitle">
+                    Id: {country.id}
+                  </IonCardSubtitle>
+                  <IonCardTitle className="ion-card-title">
+                    Nombre: {country.name}
+                  </IonCardTitle>
                 </IonCardHeader>
+                <IonCardContent>
+                  <IonCardTitle className="ion-card-title">
+                    Dato Curioso: {country.fact}
+                  </IonCardTitle>
+                </IonCardContent>
               </IonCard>
-            )
+            );
           })}
         </IonContent>
       </IonPage>
-    )
-
-
+    );
   }
-
-
 };
-
-
 
 export default List;

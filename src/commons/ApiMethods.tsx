@@ -1,28 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ApiMethods(url: any) {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const putMethod = (id: any, name: any) => {
-        const config = {
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            }
-        }
-
-        setLoading(true);
-        axios.put(`${url}/${id}`, { name: name }, config)
-            .then((response) => { setData(response.data) })
-            .catch((err) => { setError(err) })
-            .finally(() => { setLoading(false) })
-
-    }
-  
-    const refetch = () => {
+  useEffect(() => {
     const config = {
       headers: {
         Accept: "application/json",
@@ -32,7 +16,29 @@ function ApiMethods(url: any) {
 
     setLoading(true);
     axios
-      .post(url, { country: "IONIC", fact: 0 }, config)
+      .get(url, config)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [url]);
+
+  const putMethod = (id: any, name: any) => {
+    const config = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    };
+
+    setLoading(true);
+    axios
+      .put(`${url}/${id}`, { name: name }, config)
       .then((response) => {
         setData(response.data);
       })
@@ -44,8 +50,29 @@ function ApiMethods(url: any) {
       });
   };
 
-    return { data, loading, error }
+  const getMethod = () => {
+    const config = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    };
 
+    setLoading(true);
+    axios
+      .post(url, { name: "IONIC", fact: "IONIC" }, config)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  return { data, loading, error, getMethod, putMethod };
 }
 
 export default ApiMethods;
