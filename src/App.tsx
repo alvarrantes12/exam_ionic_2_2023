@@ -4,7 +4,6 @@ import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import List from './pages/List';
 import Form from './pages/form/Form';
-import CreateForm from './pages/form/CreateForm';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -41,9 +40,6 @@ const App: React.FC = () => {
             </Route>
             <Route path="/pages/Form" exact={true}>
               <Form />
-            </Route>
-            <Route path="/pages/CreateForm" exact={true}>
-              <CreateForm />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
