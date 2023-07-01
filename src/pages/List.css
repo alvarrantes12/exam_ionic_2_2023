@@ -1,0 +1,19 @@
+.Ion_Card {
+    background-color: rgb(57, 52, 52);
+}
+
+.Ion_Card_Title {
+  
+    text-align: center;
+}
+
+.Ion_Card_id {
+    background-color: rgb(52, 48, 48);
+    text-align: right;
+}
+
+.Ion_Card_SubTitle {
+    text-align: center;
+}
+
+

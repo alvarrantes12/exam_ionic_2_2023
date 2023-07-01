@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router';
+import './List.css';
 import {
   IonPage,
   IonHeader,
@@ -8,8 +9,7 @@ import {
   IonCard,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle,
-  IonButton
+  IonCardSubtitle
 
 } from '@ionic/react'
 import ApiMethods from '../commons/ApiMethods';
@@ -33,10 +33,11 @@ const List: React.FC = () => {
       <IonContent>
         { data?.map((country: any) => {
           return(
-            <IonCard>
+            <IonCard className='Ion_Card'>
               <IonCardHeader>
-                <IonCardTitle >Nombre: {country.name}</IonCardTitle>
-                <IonCardSubtitle >Dato curioso: {country.fact}</IonCardSubtitle>
+                <IonCardSubtitle className='Ion_Card_id'>Id: {country.id}</IonCardSubtitle>
+                <IonCardTitle className='Ion_Card_Title'>Nombre: {country.name}</IonCardTitle>
+                <IonCardSubtitle className='Ion_Card_SubTitle'>Dato curioso: {country.fact}</IonCardSubtitle>
               </IonCardHeader>
             </IonCard>
           )
