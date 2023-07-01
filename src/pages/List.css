@@ -1,0 +1,18 @@
+.Card {
+    background-color: white;
+}
+
+.Title {
+    color: Black;
+    text-align: center;
+}
+
+.SubTitle {
+    color: black;
+    text-align: left;
+}
+
+.Content {
+    color: green;
+    text-align: right;
+}
