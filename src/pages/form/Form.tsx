@@ -1,41 +1,62 @@
-import React, { useState } from 'react';
-import { IonContent, IonInput, IonItem, IonLabel, IonPage, IonButton } from '@ionic/react';
+import React, {useState} from "react";
+import { IonContent, IonInput, IonItem, IonLabel, IonPage, IonButton } from "@ionic/react";
+import ApiMethods from "../../commons/ApiMethods";
+import { environment } from "../../environments/environment.dev";
+import { useHistory } from "react-router-dom";
 
 const Form: React.FC = () => {
     const [id, setId] = useState('');
     const [name, setName] = useState('');
+    const [fact, setFact] = useState('');
     const [message, setMessage] = useState('');
+    const history = useHistory();
 
+
+    const { putMethod } = ApiMethods(`${environment.apiEndpoint}/countries`);
+    
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        putMethod(id, name);
-        setMessage('Editado correctamente');
+        putMethod(id, name, fact); // función putMetod para editar el pais 
+        setMessage('El país ha sido editado correctamente')
         setId('');
         setName('');
+        setFact('');
+    }
+    const handleRedirect = () =>{
+        history.push('/pages/List');
+        window.location.reload();
     }
 
-    return (
+    return(
         <IonPage>
             <IonContent>
                 <h1>{message}</h1>
-                <form onSubmit={handleSubmit} style={{marginTop: '50px', marginLeft: '20px', marginRight: '10px'}}>
+                <form onSubmit={handleSubmit} style= {{marginTop: '50px', marginLeft: '20px', marginRight: '10px' }}>
                     <IonItem>
                         <IonLabel position='floating'>ID</IonLabel>
-                        <IonInput
-                            value={id}
-                            onIonChange={(e) => setId(e.detail.value!)}
+                        <IonInput 
+                            value={id} 
+                            onIonChange={(e) => setId(e.detail.value!)} 
+                            required></IonInput>
+                    </IonItem>
+
+                    <IonItem style={{marginBottom: '20px'}}>
+                        <IonLabel position='floating'>Nombre del País</IonLabel>
+                        <IonInput 
+                            value={name} 
+                            onIonChange={(e) => setName(e.detail.value!)} 
                             required></IonInput>
                     </IonItem>
                     <IonItem style={{marginBottom: '20px'}}>
-                        <IonLabel position='floating'>Nombre</IonLabel>
-                        <IonInput
-                            value={name}
-                            onIonChange={(e) => setName(e.detail.value!)}
+                        <IonLabel position='floating'>Fun fact</IonLabel>
+                        <IonInput 
+                            value={fact} 
+                            onIonChange={(e) => setFact(e.detail.value!)} 
                             required></IonInput>
                     </IonItem>
-                    <IonButton type='submit' expand='full'>Editar</IonButton>
+                    <IonButton type='submit' color ='warning'  >Editar país</IonButton>
                 </form>
-                <IonButton expand='full'>Ir a la Lista</IonButton>
+                <IonButton onClick={handleRedirect} color ='secondary' >Ir a la lista</IonButton>
             </IonContent>
         </IonPage>
     )
